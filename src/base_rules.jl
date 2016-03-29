@@ -220,6 +220,9 @@ ReverseDiffSource.@deriv_rule ./(x::Real         , y::AbstractArray)   y     -x 
 ReverseDiffSource.@deriv_rule ./(x::AbstractArray, y::Real )           y     -sum(x .* ds) / (y * y)
 ReverseDiffSource.@deriv_rule ./(x::AbstractArray, y::AbstractArray)   y     -x .* ds ./ (y .* y)
 
+# mod2pi
+ReverseDiffSource.@deriv_rule mod2pi(x::Real)                          x     ds
+
 # transpose
 ReverseDiffSource.@deriv_rule transpose(x::Real )                      x     ds
 ReverseDiffSource.@deriv_rule transpose(x::AbstractArray)              x     transpose(ds)
